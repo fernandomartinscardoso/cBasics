@@ -172,3 +172,76 @@ As summarized by Schildt:
 * _Compile time:_ The time during which your program is being compiled.
 
 * _Run time:_ The time during which your program is executing.
+
+## Expressions: Data and Operators
+
+C supports many types of data, which can be represented by variables, constants, or values returned by functions.
+
+### Basic data types
+
+The foundational data types defined by C89 are:
+
+1. Character, declared using __char__
+1. Integer, declared using __int__
+1. Floating-point, declared using __float__
+1. Double floating-point, declared using __double__
+1. Valueless, declared using __void__
+
+Except for __void__, all the other types can be altered by the following modifiers:
+
+* __signed__
+* __unsigned__
+* __long__
+* __short__
+
+Which results on the _minimum range_ below for all data types defined by the C standard (Schildt):
+
+|   Type                 |  Typical Size (Bits) |   Minimal Range                              |
+|:-----------------------|----------------------|:---------------------------------------------|
+| char                   |   8                  |  -127 to 127                                 |
+| unsigned char          |   8                  |  0 to 255                                    |
+| signed char            |   8                  |  -127 to 127                                 |
+| int                    |   16 or 32           |  -32,767 to 32,767                           |
+| unsigned int           |   16 or 32           |  0 to 65,535                                 |
+| signed int             |   16 or 32           |  Same as __int__                             |
+| short int              |   16                 |  -32,767 to 32,767                           |
+| unsigned short int     |   16                 |  0 to 65,535                                 |
+| signed short int       |   16                 |  Same as __short int__                       |
+| long int               |   32                 |  -2,147,483,647 to 2,147,483,647             |
+| long long int          |   64                 |  -(2<sup>63</sup> - 1) to 2<sup>63</sup> - 1 (Added by C99) |
+| signed long int        |   32                 |  Same as __long int__                        |
+| unsigned long int      |   32                 |  0 to 4,294,967,295                          |
+| unsigned long long int |   64                 |  2<sup>64</sup> - 1 (Added by C99)           |
+| float                  |   32                 |  1E-37 to 1E+37 with six digits of precision |
+| double                 |   64                 |  1E-37 to 1E+37 with ten digits of precision |
+| long double            |   80                 |  1E-37 to 1E+37 with ten digits of precision |
+
+The integers are __signed__ by default, so __signed integer__ is redundant but allowed. The __char__ is unsigned by default, therefore it can be modified by __signed__, which is the main use of this modifier.
+
+In Schildt's words:
+
+> Signed and unsigned integers differ in the way that the high-order bit of the integer is interpreted. If you specify a signed integer, the compiler generates code that assumes the high-order bit of an integer is to be used as a _sign flag_. If the sign flag is 0, the number is positive; if it is 1, the number is negative.
+>
+> In general, negative numbers are represented using the _two's complement_ approach, which reverses all bits in the number (except the sign flag), adds 1 to this number, and sets the sign flag to 1.
+>
+> Signed integers are important for a great many algorithms, but they only have half the absolute magnitude of their unsigned relatives. For example, here is 32,767 in binary: __0 1 1 1 1 1 1 1  1 1 1 1 1 1 1 1__
+>
+> If the high-order bit were set to 1, the number would be interpreted as –1. However, if you declare this to be an __unsigned int__, the number becomes 65,535 when the high-order bit is set to 1.
+
+If the modifier is used by itself, then __int__ is assumed by default. Thus, __signed__ is the same as __signed int__, __long__ is the same as __long int__, and so on.
+
+### Identifiers names
+
+In C, the name of variables, functions, labels, among other user-defined items are called _identifiers_. The length of the identifiers can vary from one to several characters, but the first character must be a letter or underscore, and teh subsequent characters must be either letters, digits, or underscores. Examples (Schildt):
+
+| Correct      | Incorrect      |
+|:-------------|:---------------|
+| count        | 1count         |
+| test23       | hi!there       |
+| high_balance | high...balance |
+
+C is case sensitive, therefore in an identifier, upper- and lowercase are treated as distinct.
+
+### Variables
+
+P. 58
