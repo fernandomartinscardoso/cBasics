@@ -1,5 +1,8 @@
 # cBasics
 
+[![Static Badge](https://img.shields.io/badge/language-6771B0?logo=c&logoColor=white&labelColor=585858)](https://www.c-language.org/)
+[![GitHub License](https://img.shields.io/github/license/fernandomartinscardoso/cBasics?color=5B9C73)](https://github.com/fernandomartinscardoso/cBasics/blob/main/LICENSE)
+
 This repository was created to share basic projects in C for study and tests purposes.
 
 ## Basic concepts
